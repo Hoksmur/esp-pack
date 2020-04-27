@@ -1,0 +1,37 @@
+﻿<html>
+<head>
+<script language="javascript">
+<!--
+console.log("Hello!");
+
+/*f1.addEventListener("submit", myEvent, false);
+f5.addEventListener("submit", myEvent, false);
+f7.addEventListener("submit", myEvent, false);*/
+
+function myEvent(event) {
+  //переменная event будет содержать объект event
+  alert("Event on " +  event.id);
+}
+//-->
+</script>
+  <meta charset="utf-8">
+  <title> Elprom Элпром
+  </title>
+</head>
+  <body>
+  <h1 align="center"> Элпром табло</h1>
+  <table border="1">
+  <tr bgcolor="aqua"> <td colspan="3" align="center"> освещение</td><td>50%</td></tr>
+  <tr bgcolor="Khaki"> <td>Номер<br>устройства</td><td>Описание</td><td>Цена</td><td></td></tr>
+  <tr><form id="1" action="test.html" method="get" onsubmit=myEvent(this)> <td>1</td><td>АИ-95</td>
+   <td><input name="price" type="text" value="12,55" required pattern="(\d{2,3})([\.|,]+)(\d{2})" ></td> <td><input type="submit" value="Обновить"></td> </form></tr>
+   
+  <tr><form id="5" action="test.html" method="get" onsubmit=myEvent(this)> <td>5</td> <td>АИ-98</td>
+   <td><input name="price" type="text" value="44,44" required pattern="(\d{2,3})([\.|,]+)(\d{2})"></td> <td><input type="submit" value="Обновить"></td> </form></tr>
+   
+  <tr><form id="7" action="test.html" method="get" onsubmit=myEvent(this)> <td>7</td> <td>Авиа</td><td><input name="price" type="text" value="99,00" required pattern="(\d{2,3})([\.|,]+)(\d{2})"></td> <td><input type="submit" value="Обновить"></td> </tr>
+   
+  <tr> <td>9</td><td>вода</td><td>--,--</td> </tr>
+  </table>
+</body>
+</html>
