@@ -1,0 +1,76 @@
+﻿<html>
+<head>
+  <meta charset="utf-8">
+  <title>Elprom Элпром</title>
+</head>
+  <body>
+  <h1 align="center"> Элпром табло</h1>
+  <table border="1" width="90%" align="center">
+  <tr bgcolor="aqua"> <td colspan="2" align="center"> освещение</td><td id="temp">12</td></tr>
+  <tr bgcolor="Khaki"> <td width="50%">Описание</td><td>Цена</td><td></td></tr>
+  
+  <tr><form id="dev1" action="test.html" method="get" > <input type="hidden" name="ip1" value="1">
+  <td>АИ-95</td>
+   <td><input name="price" type="text" value="12,55" required pattern="(\d{2,3})([\.|,]+)(\d{2})" ></td> <td><button id="bt5" type="button" onclick=mysubm(this)>Задать</button></td> </form></tr>
+   
+  <tr><form id="dev5" action="test.html" method="get" onsubmit=mysubm(this)> <input type="hidden" name="ip5" value="5">
+  <td>ДТ летнее</td>
+   <td><input name="price" type="text" value="12,55" required pattern="(\d{2,3})([\.|,]+)(\d{2})" ></td> <td><button type="submit">Задать</button></td> </form></tr>
+  
+  </table>
+  <p id="mesg">Msg: </p>
+  <p id="answ">Answ: </p>
+</body>
+
+<script type="text/javascript"><!--
+let myip="192.168.4.1";
+
+let req = new XMLHttpRequest();
+req.open('GET', "/rpc/Temp.Read", true);
+req.timeout = 2000;
+
+req.onreadystatechange = function (event) {
+  if ( req.readyState != 0) {
+   let info = document.getElementById("mesg").innerText;
+   info = info + " " + String(req.readyState) + ":" + String(req.status);
+   document.getElementById("mesg").innerText = info;
+
+   let msg = "";
+   if (req.readyState == 4) {
+    msg = document.getElementById("answ").innerText;
+    msg = msg + "/ " + req.responseText;
+    document.getElementById("answ").innerText = msg;
+  }
+  }
+};
+
+req.send();
+
+
+function mysubm(obj) {
+  alert("Submit " + obj.id);
+  obj.preventDefault();
+}
+
+function change() {
+  let txt = document.getElementById("temp");
+  txt.innerText = Number(txt.innerText)+1;
+}
+
+function inc50 () {
+  let txt = document.getElementById("temp");
+  txt.innerText = Number(txt.innerText)+50;
+  
+}
+
+let tim = window.setInterval( change, 1000);
+let tout = window.setTimeout( inc50, 2000); 
+if (setInterval) { 
+ ;
+} else {
+ alert("Cant do!");
+}
+
+//--></script>
+
+</html>
